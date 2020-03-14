@@ -1,2 +1,2 @@
 # myFirstRepo
-testing for git and github
+vue practice
