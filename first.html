@@ -3,6 +3,8 @@
 <head>
 	<title></title>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.11/vue.min.js" integrity="sha256-ngFW3UnAN0Tnm76mDuu7uUtYEcG3G5H1+zioJw3t+68=" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="ajax.js"></script>
 </head>
 <body>
 <div id="our-app">
@@ -11,9 +13,48 @@
 	{{lname}}
 
 </div>
-<script type="text/javascript" src="app.js">
-	
 
+<!-- here we can display loading text when client send data to server -->
+<div id='before' style="display: none">
+	Loading...
+</div>
+
+<!-- here we can display ajax response here -->
+<div id='ajax-response'>
+</div>
+
+<!-- ajax call will trigger on button press -->
+<button id="demo">click</button>
+
+<script type="text/javascript" src="app.js"></script>
+
+<script type="text/javascript">
+	jQuery(document).ready(function($) {
+		//button click event
+		$('#demo').click(function(event) {
+
+			//_URL,_data,_success,_dataType="html",_type="POST",_beforeSend=$('#before')
+
+			//server url
+			var url="http://192.168.1.100:8000/mcq";
+
+			//parameter (string or json object)
+			var param ="question_id=1";
+
+			// call ajax using ajaxRequest() (you can see this method in ajax.js file)
+			jqxhr.ajaxRequest(url,param,'json','GET');
+
+			//try to receive server response and data variable contains server response
+			ajaxCall.done(function(data){
+
+				//print server response in console
+				console.log(data);
+			})
+	
+		});
+		
+	});
+	
 </script>
 </body>
 </html>
