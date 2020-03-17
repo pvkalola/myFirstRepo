@@ -20,9 +20,9 @@ var jqxhr =
 				
 		})*/
 	    .fail(function(jqXHR, textStatus, errorThrown) { 
-	 		/*console.log(jqXHR);
+	 		console.log(jqXHR);
 	 		console.log(textStatus);
-	 		console.log(errorThrown);*/
+	 		console.log(errorThrown);
 		 })
 		.always(function(jqXHR, textStatus, errorThrown) { 
 			_beforeSend.hide();
